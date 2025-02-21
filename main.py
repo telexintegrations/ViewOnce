@@ -25,42 +25,61 @@ def nginx_status():
     return JSONResponse(
         status_code=200,
         content={
-            "data": {
-                "date": {
-                    "created_at": "2025-02-20",
-                    "updated_at": "2025-02-20"
-                },
-                "descriptions": {
-                    "app_name": "ViewOnce",
-                    "app_description": "To set a view once setting for messages",
-                    "app_logo": "https://imgur.com/a/wOwIpco",
-                    "app_url": "http://toluairbnb.tech/viewOnce",
-                    "background_color": "#fff"
-                },
-                "is_active": True,
-                "integration_category": "Monitoring & Logging",
-                "integration_type": "modifier",
-                "key_features": ["check box"],
-                "author": "TeeCoded",
-                "permissions": {
-                    "monitoring_user": {
-                        "always_online": True,
-                        "display_name": "Performance Monitor"
-                    }
-                },
-                "settings": [
-                    {
-                        "label": "Update view once",
-                        "type": "checkbox",
-                        "required": True,
-                        "default": False,
-                        "options": [True, False]
-                    }
-                ],
-                "target_url": "http://toluairbnb.tech/target_url",
-                "tick_url": "None"
-            }
-        }
+	"data": {
+		"author": "Micah Shallom",
+		"date": {
+			"created_at": "2025-02-13",
+			"updated_at": "2025-02-13"
+		},
+		"descriptions": {
+			"app_description": "A message formatter bot that processes incoming messages and sends back formatted responses.",
+			"app_logo": "https://media.tifi.tv/telexbucket/public/logos/formatter.png",
+			"app_name": "Message Formatter",
+			"app_url": "https://txtformat.com/",
+			"background_color": "#ffffff"
+		},
+		"integration_category": "Communication & Collaboration",
+		"integration_type": "modifier",
+		"is_active": "true",
+		"key_features": [
+			"Receive messages from Telex channels.",
+			"Format messages based on predefined templates or logic.",
+			"Send formatted responses back to the channel.",
+			"Log message formatting activity for auditing purposes."
+		],
+		"permissions": {
+			"events": [
+				"Receive messages from Telex channels.",
+				"Format messages based on predefined templates or logic.",
+				"Send formatted responses back to the channel.",
+				"Log message formatting activity for auditing purposes."
+			]
+		},
+		"settings": [
+			{
+				"default": 100,
+				"label": "maxMessageLength",
+				"required": "true",
+				"type": "number"
+			},
+			{
+				"default": "world,happy",
+				"label": "repeatWords",
+				"required": "true",
+				"type": "multi-select"
+			},
+			{
+				"default": 2,
+				"label": "noOfRepetitions",
+				"required": "true",
+				"type": "number"
+			}
+		],
+		"target_url": "https://system-integration.telex.im/format-message",
+		"tick_url": "https://system-integration.telex.im/format-message",
+		"website": "https://telex.im"
+	}
+}
     )
 
 
