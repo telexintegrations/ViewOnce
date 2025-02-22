@@ -39,7 +39,7 @@ def nginx_status():
                 "app_name": "ViewOnce",
                 "app_description": "A telex app to create view once messages",
                 "app_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRVxPRCAc6HBRl_tR-aMkrCUHZq45ChY_RiwkzwqdF0T8IO52m3Yb9yvp1jjlpyyzVS0&usqp=CAU",
-                "app_url": "https://viewonce-1.onrender.com/viewOnce",
+                "app_url": "https://viewonce.onrender.com/viewOnce",
                 "background_color": "#fff"
             },
             "is_active": True,
@@ -55,6 +55,12 @@ def nginx_status():
                     "type": "checkbox",
                     "required": True,
                     "default": True
+                },
+                {
+                    "label": "View Once message",
+                    "type": "text",
+                    "required": True,
+                    "default": "Contact <INPUT YOUR NUMBER> for the message"
                 }
             ],
             "target_url": "https://viewonce.onrender.com/target_url",
@@ -76,38 +82,16 @@ async def targetUrl(request: Request):
 
     body = await request.json()
 
-    print("The request fields is ", body)
+    settings = body.get('settings')
+    for setting in settings:
+        if setting.get('type') == 'text':
+            edited_message = setting.get('default')
+        if setting.get('type') == "checkbox":
+            viewonce = setting.get("default")
+    if viewonce:
+        return {"message": edited_message}
+    return {"message": body.get("message")}
 
-    return {"message": "In progress"}
-
-#     if len(settings) == 0:
-#         return JSONResponse(
-#             status_code=400,
-#             content={
-#                 "error": "No setting was found for your message"""
-#             }
-#         )
-#     for setting in settings:
-#         if setting.get('default') == "true":
-#             return JSONResponse(
-#                 status_code=200,
-#                 content={
-#                     "event_name": "message_formatted",
-#                     "message": "This is a view once message, Contact the \
-# sender for further clarifications",
-#                     "status": "success",
-#                     "username": "VeiwOnce-bot"
-#                 }
-#             )
-#     return JSONResponse(
-#         status_code=200,
-#         content={
-#             "event_name": "message_ not_formatted",
-#             "message": "message",
-#             "status": "success",
-#             "username": "VeiwOnce-bot"
-#         }
-#    )
 
 if __name__ == "__main__":
     """ Run the FastAPI application """
