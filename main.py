@@ -35,7 +35,7 @@ def nginx_status():
                     "app_name": "ViewOnce",
                     "app_description": "A telex app to create view once messages",
                     "app_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRVxPRCAc6HBRl_tR-aMkrCUHZq45ChY_RiwkzwqdF0T8IO52m3Yb9yvp1jjlpyyzVS0&usqp=CAU",
-                    "app_url": "https://viewonce-1.onrender.com",
+                    "app_url": "https://viewonce-1.onrender.com/viewOnce",
                     "background_color": "#fff"
                 },
                 "is_active": True,
