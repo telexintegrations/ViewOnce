@@ -27,7 +27,10 @@ app.add_middleware(
 
 @app.get("/viewOnce")
 def nginx_status():
-    """ The function for the integration endpoint"""
+    """ The function for the integration endpoint
+    Return:
+        The integration json which efines the integration
+    """
 
     return {
         "data": {
@@ -79,18 +82,21 @@ def nginx_status():
 
 @app.post("/target_url")
 async def targetUrl(request: Request):
-    """The target url for the telex integration"""
+    """The target url for the telex integration
+    Args:
+        request: The request data where the body is found
+    Return:
+        The message after the view once setting has been applied
+    """
 
     body = await request.json()
-    print(body)
-
+    # Get the settings from the request body
     settings = body.get('settings')
     for setting in settings:
-        print("The setting been applied is", setting)
         if setting.get('type') == 'text':
-            edited_message = setting.get('default')
+            edited_message = setting.get('default')  # Set if the type is text
         if setting.get('type') == "checkbox":
-            viewonce = setting.get("default")
+            viewonce = setting.get("default")  # Set if the type is checkbox
     if viewonce:
         return {"message": edited_message}
     return {"message": body.get("message")}
