@@ -26,61 +26,43 @@ def nginx_status():
     return JSONResponse(
         status_code=200,
         content={
-	"data": {
-		"author": "Micah Shallom",
-		"date": {
-			"created_at": "2025-02-13",
-			"updated_at": "2025-02-13"
-		},
-		"descriptions": {
-			"app_description": "A message formatter bot that processes incoming messages and sends back formatted responses.",
-			"app_logo": "https://media.tifi.tv/telexbucket/public/logos/formatter.png",
-			"app_name": "Message Formatter",
-			"app_url": "https://txtformat.com/",
-			"background_color": "#ffffff"
-		},
-		"integration_category": "Communication & Collaboration",
-		"integration_type": "modifier",
-		"is_active": "true",
-		"key_features": [
-			"Receive messages from Telex channels.",
-			"Format messages based on predefined templates or logic.",
-			"Send formatted responses back to the channel.",
-			"Log message formatting activity for auditing purposes."
-		],
-		"permissions": {
-			"events": [
-				"Receive messages from Telex channels.",
-				"Format messages based on predefined templates or logic.",
-				"Send formatted responses back to the channel.",
-				"Log message formatting activity for auditing purposes."
-			]
-		},
-		"settings": [
-			{
-				"default": 100,
-				"label": "maxMessageLength",
-				"required": "true",
-				"type": "number"
-			},
-			{
-				"default": "world,happy",
-				"label": "repeatWords",
-				"required": "true",
-				"type": "multi-select"
-			},
-			{
-				"default": 2,
-				"label": "noOfRepetitions",
-				"required": "true",
-				"type": "number"
-			}
-		],
-		"target_url": "https://system-integration.telex.im/format-message",
-		"tick_url": "https://system-integration.telex.im/format-message",
-		"website": "https://telex.im"
-	}
-}
+            "data": {
+                "date": {
+                    "created_at": "2025-02-20",
+                    "updated_at": "2025-02-20"
+                },
+                "descriptions": {
+                    "app_name": "Telex Wordle",
+                    "app_description": "A wordle integration for Telex",
+                    "app_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRVxPRCAc6HBRl_tR-aMkrCUHZq45ChY_RiwkzwqdF0T8IO52m3Yb9yvp1jjlpyyzVS0&usqp=CAU",
+                    "app_url": "https://telex-wordle.vercel.app/",
+                    "background_color": "#fff"
+                },
+                "is_active": True,
+                "integration_type": "modifier",
+                "integration_category": "Monitoring & Logging",
+                "key_features": [
+                    "Find and close view once messages"
+                ],
+                "author": "Toluwaloju Kayode",
+                "settings": [
+                    {
+                        "label": "Find view once",
+                        "type": "checkbox",
+                        "required": True,
+                        "default": True
+                    }
+                ],
+                "target_url": "https://viewonce-1.onrender.com/tagret_url",
+                "endpoints": [
+                    {
+                        "path": "/target_url",
+                        "method": "POST",
+                        "description": "Default endpoint"
+                    }
+                ]
+            }
+        }
     )
 
 
