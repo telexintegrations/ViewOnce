@@ -51,13 +51,14 @@ def nginx_status():
             "author": "Toluwaloju Kayode",
             "settings": [
                 {
-                    "label": "Find view once",
+                    "label": "Allow view once",
                     "type": "checkbox",
                     "required": True,
                     "default": True
                 },
                 {
                     "label": "View Once message",
+                    "description": "This is the message to replace the view once message",
                     "type": "text",
                     "required": True,
                     "default": "Contact <INPUT YOUR NUMBER> for the message"
@@ -81,16 +82,18 @@ async def targetUrl(request: Request):
     """The target url for the telex integration"""
 
     body = await request.json()
+    print(body)
 
-    settings = await body.get('settings')
+    settings = body.get('settings')
     for setting in settings:
+        print("The setting been applied is", setting)
         if setting.get('type') == 'text':
-            edited_message = await setting.get('default')
+            edited_message = setting.get('default')
         if setting.get('type') == "checkbox":
-            viewonce = await setting.get("default")
+            viewonce = setting.get("default")
     if viewonce:
         return {"message": edited_message}
-    return {"message": await body.get("message")}
+    return {"message": body.get("message")}
 
 
 if __name__ == "__main__":
