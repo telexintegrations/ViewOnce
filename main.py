@@ -82,15 +82,15 @@ async def targetUrl(request: Request):
 
     body = await request.json()
 
-    settings = body.get('settings')
+    settings = await body.get('settings')
     for setting in settings:
         if setting.get('type') == 'text':
-            edited_message = setting.get('default')
+            edited_message = await setting.get('default')
         if setting.get('type') == "checkbox":
-            viewonce = setting.get("default")
+            viewonce = await setting.get("default")
     if viewonce:
         return {"message": edited_message}
-    return {"message": body.get("message")}
+    return {"message": await body.get("message")}
 
 
 if __name__ == "__main__":
