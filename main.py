@@ -74,7 +74,9 @@ def nginx_status():
 async def targetUrl(request: Request):
     """The target url for the telex integration"""
 
-    print(request)
+    body = await request.json()
+
+    print("The request fields is ", body)
 
     return {"message": "In progress"}
 
