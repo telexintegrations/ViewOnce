@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """FastApi to return a JSON for telex integration"""
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 from os import environ
@@ -71,37 +71,41 @@ def nginx_status():
 
 
 @app.post("/target_url")
-async def targetUrl(message: str, channel_id: str, settings: List[Dict]):
+async def targetUrl(request: Request):
     """The target url for the telex integration"""
 
-    if len(settings) == 0:
-        return JSONResponse(
-            status_code=400,
-            content={
-                "error": "No setting was found for your message"""
-            }
-        )
-    for setting in settings:
-        if setting.get('default') == "true":
-            return JSONResponse(
-                status_code=200,
-                content={
-                    "event_name": "message_formatted",
-                    "message": "This is a view once message, Contact the \
-sender for further clarifications",
-                    "status": "success",
-                    "username": "VeiwOnce-bot"
-                }
-            )
-    return JSONResponse(
-        status_code=200,
-        content={
-            "event_name": "message_ not_formatted",
-            "message": "message",
-            "status": "success",
-            "username": "VeiwOnce-bot"
-        }
-    )
+    print(request)
+
+    return {"message": "In progress"}
+
+#     if len(settings) == 0:
+#         return JSONResponse(
+#             status_code=400,
+#             content={
+#                 "error": "No setting was found for your message"""
+#             }
+#         )
+#     for setting in settings:
+#         if setting.get('default') == "true":
+#             return JSONResponse(
+#                 status_code=200,
+#                 content={
+#                     "event_name": "message_formatted",
+#                     "message": "This is a view once message, Contact the \
+# sender for further clarifications",
+#                     "status": "success",
+#                     "username": "VeiwOnce-bot"
+#                 }
+#             )
+#     return JSONResponse(
+#         status_code=200,
+#         content={
+#             "event_name": "message_ not_formatted",
+#             "message": "message",
+#             "status": "success",
+#             "username": "VeiwOnce-bot"
+#         }
+#    )
 
 if __name__ == "__main__":
     """ Run the FastAPI application """
