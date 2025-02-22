@@ -57,7 +57,7 @@ def nginx_status():
                     "default": True
                 }
             ],
-            "target_url": "https://viewonce-1.onrender.com/target_url",
+            "target_url": "https://viewonce.onrender.com/target_url",
             "endpoints": [
                 {
                     "path": "/target_url",
