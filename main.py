@@ -17,7 +17,7 @@ app.add_middleware(
          "http://staging.telextest.im",
         "http://telextest.im",
         "https://staging.telex.im",
-        "https://telex.im",
+        "https://telex.im"
     ],
     allow_credentials=True,
     allow_methods=["*"],
