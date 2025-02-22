@@ -32,10 +32,10 @@ def nginx_status():
                     "updated_at": "2025-02-20"
                 },
                 "descriptions": {
-                    "app_name": "Telex Wordle",
-                    "app_description": "A wordle integration for Telex",
+                    "app_name": "ViewOnce",
+                    "app_description": "A telex app to create view once messages",
                     "app_logo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRRVxPRCAc6HBRl_tR-aMkrCUHZq45ChY_RiwkzwqdF0T8IO52m3Yb9yvp1jjlpyyzVS0&usqp=CAU",
-                    "app_url": "https://telex-wordle.vercel.app/",
+                    "app_url": "https://viewonce-1.onrender.com",
                     "background_color": "#fff"
                 },
                 "is_active": True,
