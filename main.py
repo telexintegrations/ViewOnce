@@ -4,6 +4,7 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
+from os import environ
 from typing import List, Dict
 
 app = FastAPI()
@@ -115,3 +116,9 @@ sender for further clarifications",
             "username": "VeiwOnce-bot"
         }
     )
+
+if __name__ == "__main__":
+    """ Run the FastAPI application """
+    import uvicorn
+    port = int(environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
