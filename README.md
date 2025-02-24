@@ -21,3 +21,8 @@ Pictures ot the integration at work is provided in the github repo.
   setting - shows the settings provided by the integration in the app
   usage - shows the integration in use by the app
 
+  App usage
+  After integrating the app. Activate it and modify the setting.
+  Edit the text box to show what you want to display whenever you are sending a view once message.
+  Save the settings and send a message in the approved channel
+
