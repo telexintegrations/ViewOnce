@@ -10,6 +10,10 @@ add it to your apps and modify the  availabe setting.
 Add your number for people in your channel to contact yoj and get the message.
 Toggle the View Once button to activate or deactivate view once
 
+if activated the following message shouls be seen instead of the original message
+    Contact <<YOUR NUMBER>> for the message
+    example: Contact 08000000000 for the message
+
 Update the text message to display after integrating the json file.
 
 Pictures ot the integration at work is provided in the github repo.
